@@ -1,4 +1,4 @@
-package com.assesment;
+package com.module;
 
 import lombok.Data;
 import lombok.Setter;
