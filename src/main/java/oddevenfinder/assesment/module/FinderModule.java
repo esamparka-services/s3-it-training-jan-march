@@ -6,7 +6,7 @@ import lombok.Setter;
 @Data
 @Setter
 @Getter
-public class Finder {
+public class FinderModule {
        private int number;
         private String type;
 
