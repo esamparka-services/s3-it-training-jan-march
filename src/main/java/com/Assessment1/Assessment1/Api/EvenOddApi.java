@@ -13,7 +13,6 @@ public class EvenOddApi {
 
         if ((evenOddModel.getNumber() % 2) == 0) {
             evenOddModel.setType("Even");
-            //evenOddModel.setNumber(100);
         } else {
             evenOddModel.setType("Odd");
 
