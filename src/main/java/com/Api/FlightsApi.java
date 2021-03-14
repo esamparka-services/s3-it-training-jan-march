@@ -38,10 +38,18 @@ public class FlightsApi {
 
     @PostMapping("/deleteRecord")
 
-    public void deleteRecord (@RequestParam int id)
+    public ResponseEntity<HttpStatus> deleteRecord (@RequestParam int id)
     {
-
-        flightsRepository.deleteById(id);
+        ResponseEntity<HttpStatus> rE;
+        if(flightsRepository.existsById(id)){
+            flightsRepository.deleteById(id);
+            rE= new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        else{
+            System.out.println("Invalid request/No data available");
+            rE= new ResponseEntity<>(HttpStatus.CREATED);
+        }
+        return rE;
 
 
     }
