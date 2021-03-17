@@ -48,7 +48,7 @@ public class FlightsApi {
         JSONObject obj = new JSONObject(jsonString);
 
 
-        JSONArray arr = obj.getJSONArray("Countries"); // notice that `"posts": [...]`
+        JSONArray arr = obj.getJSONArray("Countries");
         for (int i = 0; i < arr.length(); i++)
         {
             Markets markets = new Markets();

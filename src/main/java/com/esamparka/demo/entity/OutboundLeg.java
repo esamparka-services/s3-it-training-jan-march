@@ -1,17 +1,13 @@
 package com.esamparka.demo.entity;
 
-import jdk.jfr.Enabled;
 import lombok.Data;
-import lombok.Value;
-import org.apache.tomcat.jni.Local;
-import org.hibernate.annotations.GeneratorType;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Data
@@ -20,7 +16,8 @@ public class OutboundLeg {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
     private int OutboundLegID;
-    private int  CarrierIds;
+    @OneToMany(cascade = CascadeType.MERGE)
+    private Set<CarrierID> carrierID;
     private int OriginId;
     private int DestinationId;
     private LocalDate DepartureDate;
