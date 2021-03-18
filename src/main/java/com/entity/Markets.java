@@ -19,5 +19,5 @@ public class Markets {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String code;
-    private String country;
+    private String name;
 }
