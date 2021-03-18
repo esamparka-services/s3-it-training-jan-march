@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FlightsApi {
-@Autowired
+    @Autowired
     FlightsRepository flightsRepository;
 
 
     @PostMapping("/addData")
 
-    public ResponseEntity<HttpStatus> addCOntent(@RequestBody MarketRequest marketRequest)
-    {
+    public ResponseEntity<HttpStatus> addCOntent(@RequestBody MarketRequest marketRequest) {
         Markets market = new Markets();
 
         market.setCode(marketRequest.getCode());
@@ -30,27 +29,44 @@ public class FlightsApi {
         flightsRepository.save(market);
 
 
-              ResponseEntity<HttpStatus> rs=  new ResponseEntity<>(HttpStatus.CONTINUE);
-              System.out.println(HttpStatus.CONTINUE + " " +HttpStatus.CHECKPOINT);
-              return  rs;
+        ResponseEntity<HttpStatus> rs = new ResponseEntity<>(HttpStatus.CONTINUE);
+        System.out.println(HttpStatus.CONTINUE + " " + HttpStatus.CHECKPOINT);
+        return rs;
 
     }
 
     @PostMapping("/deleteRecord")
 
-    public ResponseEntity<HttpStatus> deleteRecord (@RequestParam int id)
-    {
+    public ResponseEntity<HttpStatus> deleteRecord(@RequestParam int id) {
         ResponseEntity<HttpStatus> rE;
-        if(flightsRepository.existsById(id)){
+        if (flightsRepository.existsById(id)) {
             flightsRepository.deleteById(id);
-            rE= new ResponseEntity<>(HttpStatus.CREATED);
-        }
-        else{
+            rE = new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
             System.out.println("Invalid request/No data available");
-            rE= new ResponseEntity<>(HttpStatus.CREATED);
+            rE = new ResponseEntity<>(HttpStatus.CREATED);
         }
         return rE;
 
+
+    }
+
+    @PostMapping("/updateRecord")
+
+    public ResponseEntity<HttpStatus> updateRecord(@RequestBody Markets markets,@RequestParam String code,@RequestParam String country) {
+
+        ResponseEntity<HttpStatus> rE;
+
+        if (flightsRepository.existsById(markets.getId())){
+            markets.setCode(code);
+            markets.setCountry(country);
+            flightsRepository.save(markets);
+            rE = new ResponseEntity<>(HttpStatus.CREATED);
+        } else {
+            System.out.println("Invalid request/No data available");
+            rE = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return rE;
 
     }
 }
