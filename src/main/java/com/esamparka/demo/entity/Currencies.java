@@ -12,8 +12,6 @@ import javax.persistence.Id;
 @Entity
 public class Currencies {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
     private String Code;
     private String Symbol;
     private String ThousandsSeparator;

@@ -51,7 +51,7 @@ public class FlightCRUDApi {
 
         if (flightsRepository.existsById(markets.getId())) {
             markets.setCode(code);
-            markets.setCode(Name);
+            markets.setName(Name);
             flightsRepository.save(markets);
             rE = new ResponseEntity<>(HttpStatus.CREATED);
         } else {
