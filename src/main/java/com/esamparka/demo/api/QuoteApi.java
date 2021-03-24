@@ -1,10 +1,8 @@
 package com.esamparka.demo.api;
 
-import com.esamparka.demo.entity.Carriers;
 import com.esamparka.demo.entity.Quotes;
-import com.esamparka.demo.repository.CarrierRepository;
+import com.esamparka.demo.entity.QuotesList;
 import com.esamparka.demo.repository.QuoteRepository;
-import com.esamparka.demo.service.CarrierService;
 import com.esamparka.demo.service.QuotesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +18,8 @@ public class QuoteApi {
     @PostMapping("/populateQuoteTable")
     public void populateCarrierTable() throws Exception{
 
-        Iterable<Quotes> C = quotesService.QuotesService();
-        quoteRepository.saveAll(C);
+        Iterable<Quotes> quotesList = quotesService.QuotesService();
+        quoteRepository.saveAll(quotesList);
     }
 
 

@@ -17,8 +17,8 @@ public class CarrierApi {
     @PostMapping("/populateCarrierTable")
     public void populateCarrierTable() throws Exception{
 
-        Iterable<Carriers> C = carrierService.CarrierService();
-        carrierRepository.saveAll(C);
+        Iterable<Carriers> carriersList = carrierService.CarrierService();
+        carrierRepository.saveAll(carriersList);
     }
 
 }

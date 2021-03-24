@@ -24,8 +24,8 @@ public class FlightsApi {
     public void RestImplementation() throws Exception {
 
         List<Markets> list = marketListService.MarketList();
-        Iterable<Markets> iterable = list;
-        flightsRepository.saveAll(iterable);
+        Iterable<Markets> marketsList = list;
+        flightsRepository.saveAll(marketsList);
 
     }
 }

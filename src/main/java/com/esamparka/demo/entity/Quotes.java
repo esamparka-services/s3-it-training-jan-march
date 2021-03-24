@@ -1,9 +1,10 @@
 package com.esamparka.demo.entity;
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -12,7 +13,7 @@ public class Quotes {
     private int QuoteId;
     private double MinPrice;
     private boolean Direct;
-   // @OneToOne(cascade = CascadeType.MERGE)
-    private String outboundLeg;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<OutboundLeg> outboundLeg;
     private Date QuoteDateTime;
 }

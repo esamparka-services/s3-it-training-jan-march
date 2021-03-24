@@ -1,6 +1,7 @@
 package com.esamparka.demo.service;
 
 import com.esamparka.demo.entity.Quotes;
+import com.esamparka.demo.entity.QuotesList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

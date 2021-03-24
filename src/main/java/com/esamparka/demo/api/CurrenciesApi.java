@@ -18,7 +18,7 @@ CurrencyRepository currencyRepository;
             @PostMapping("/PopulateCurrenciesTable")
     public  void populateCurrency()
             {
-                Iterable<Currencies> C = currencyService.CurrencyService();
-                currencyRepository.saveAll(C);
+                Iterable<Currencies> currenciesList = currencyService.CurrencyService();
+                currencyRepository.saveAll(currenciesList);
             }
 }

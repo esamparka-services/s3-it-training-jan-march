@@ -19,8 +19,8 @@ public class PlaceApi {
     @PostMapping("/populatePlaceTable")
     public void populatePlaceTable() throws Exception{
 
-        Iterable<Places> C = placesService.PlaceServices();
-        placesRepository.saveAll(C);
+        Iterable<Places> placesList = placesService.PlaceServices();
+        placesRepository.saveAll(placesList);
         }
     }
 
