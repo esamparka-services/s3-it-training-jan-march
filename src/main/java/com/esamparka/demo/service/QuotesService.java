@@ -1,14 +1,11 @@
 package com.esamparka.demo.service;
 
 import com.esamparka.demo.entity.Quotes;
-import com.esamparka.demo.entity.QuotesList;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class QuotesService {
@@ -16,6 +13,7 @@ public class QuotesService {
 
     @Autowired
     QuoteGetResponseBodyService quoteGetResponseBodyService;
+
     public List<Quotes> QuotesService() {
         List<Map> list = null;
         List<Quotes> listObjects = new ArrayList<>();
@@ -25,6 +23,13 @@ public class QuotesService {
             for (Map item : list) {
                 ModelMapper modelMapper = new ModelMapper();
                 Quotes carriers = modelMapper.map(item, Quotes.class);
+
+
+                LinkedHashMap linkedHashMap = (LinkedHashMap) item.get("OutboundLeg");
+                Map convertedMap = linkedHashMap;
+                String outboundLegString = convertedMap.toString();
+
+                carriers.setOutboundLegJSON(outboundLegString);
                 Quotes myObject = carriers;
                 listObjects.add(myObject);
             }

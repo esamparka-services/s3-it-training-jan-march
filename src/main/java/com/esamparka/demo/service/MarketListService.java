@@ -47,9 +47,7 @@ public  class MarketListService {
             for (Map item : list) {
 
                 ModelMapper modelMapper = new ModelMapper();
-                Markets marketRequest = modelMapper.map(item, Markets.class);
-                Markets myObject = marketRequest;
-
+                Markets myObject = modelMapper.map(item, Markets.class);
                 listObjects.add(myObject);
             }
         }

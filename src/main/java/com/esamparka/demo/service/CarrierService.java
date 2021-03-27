@@ -24,8 +24,7 @@ public class CarrierService {
             list = (List<Map>) response.getBody().get("Carriers");
             for (Map item : list) {
                 ModelMapper modelMapper = new ModelMapper();
-                Carriers carriers = modelMapper.map(item, Carriers.class);
-                Carriers myObject = carriers;
+                Carriers myObject = modelMapper.map(item, Carriers.class);
                 listObjects.add(myObject);
             }
         }

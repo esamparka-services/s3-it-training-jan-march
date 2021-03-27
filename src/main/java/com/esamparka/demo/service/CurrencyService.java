@@ -30,10 +30,7 @@ public class CurrencyService {
             for (Map item : list) {
 
                 ModelMapper modelMapper = new ModelMapper();
-                Currencies currencies = modelMapper.map(item, Currencies.class);
-                Currencies myObject = currencies;
-
-
+                Currencies myObject = modelMapper.map(item, Currencies.class);
                 listObjects.add(myObject);
             }
 

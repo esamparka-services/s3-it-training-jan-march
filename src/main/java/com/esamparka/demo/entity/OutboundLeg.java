@@ -1,24 +1,39 @@
 package com.esamparka.demo.entity;
 
-import jdk.jfr.Enabled;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table (name = "outboundLeg")
 @Data
+@Setter
+@Getter
 public class OutboundLeg {
-
     @Id
-    private int CarrierIds;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "outboundleg_id")
+    private int OutboundLegId;
     private int OriginIds;
     private int DestinationIds;
     private Date DepartureDate;
 
-    @ManyToOne
-    Quotes quotes;
+
+
+    @OneToMany(cascade =CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "outboundLeg",targetEntity = CarrierId.class)
+    private List<CarrierId> carrierId = new ArrayList<CarrierId>();
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "quote_id")
+//    private Quotes quotes;
+
+
+
+
+
 }

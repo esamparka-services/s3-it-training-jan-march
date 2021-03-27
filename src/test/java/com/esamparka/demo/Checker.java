@@ -1,14 +1,11 @@
 package com.esamparka.demo;
 
-import com.esamparka.demo.entity.Markets;
+import com.esamparka.demo.entity.*;
 import com.esamparka.demo.model.flights.MarketRequest;
 import com.esamparka.demo.model.flights.MarketsList;
 import com.esamparka.demo.repository.FlightsRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.r2dbc.DataR2dbcTest;
-import org.springframework.core.serializer.Deserializer;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,10 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
@@ -29,16 +23,27 @@ import org.modelmapper.PropertyMap;
 public class Checker implements Serializable {
 
 
-
-@Test
+    @Test
     public void RestImplementation() {
+
+        List<Map> list = null;
+        List<Quotes> listObjects = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("x-rapidapi-key", "82bd4dde56msh28191fe62be6478p1c002ejsn3365ddee9209");
         headers.set("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com");
         HttpEntity<String> httpEntity = new HttpEntity<>(headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/anytime?inboundpartialdate=anytime", HttpMethod.GET,httpEntity,String.class);
-        System.out.println(responseEntity.getBody());
+        ResponseEntity<String> response = restTemplate.exchange("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/SFO-sky/JFK-sky/anytime?inboundpartialdate=anytime", HttpMethod.GET, httpEntity, String.class);
+        System.out.println(response.getBody());
+
+
+    }
+
+
+
+
+
+
     }
 
 
@@ -106,4 +111,3 @@ public class Checker implements Serializable {
 //        Markets marketRequest = modelMapper.map(item, Markets.class);
 //        return marketRequest;
 //    }
-}

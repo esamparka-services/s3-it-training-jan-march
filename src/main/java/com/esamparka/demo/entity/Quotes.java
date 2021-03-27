@@ -10,10 +10,19 @@ import java.util.List;
 @Data
 public class Quotes {
     @Id
+    @Column(name = "quote_id")
     private int QuoteId;
     private double MinPrice;
     private boolean Direct;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<OutboundLeg> outboundLeg;
     private Date QuoteDateTime;
+    private String outboundLegJSON;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private OutboundLeg outboundLeg;
+    @Transient
+    private int OutboundId;
+
+//    @OneToMany(cascade =CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "quotes",targetEntity = OutboundLeg.class)
+//    private List<OutboundLeg> outboundLeg;
+
 }

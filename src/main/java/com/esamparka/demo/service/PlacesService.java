@@ -24,8 +24,7 @@ public class PlacesService {
             list = (List<Map>) response.getBody().get("Places");
             for (Map item : list) {
                 ModelMapper modelMapper = new ModelMapper();
-                Places places = modelMapper.map(item, Places.class);
-                Places myObject = places;
+                Places myObject = modelMapper.map(item, Places.class);
                 listObjects.add(myObject);
             }
         }
