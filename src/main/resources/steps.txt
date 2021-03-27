@@ -1,0 +1,19 @@
+Make a call to the api using postman
+    Review the contract
+
+
+
+ Goal:
+    Call the quotes api
+          htppnet/RestTemplate -> This will let you can an api
+          store the reponse a string / you could also store as a java object
+    process ->
+    Quote:
+    attributes:
+
+    vaiables:
+
+
+
+    persist in the database
+
